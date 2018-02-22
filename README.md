@@ -660,7 +660,7 @@ format_main_df.sort_values(by=('% Overall Passing Rate'), ascending=True).head(5
 
 
 
-Math Scores By GradeMath Scores By Grade
+Math Scores By Grade
 
 
 ```python
