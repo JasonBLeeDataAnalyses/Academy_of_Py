@@ -11878,7 +11878,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#District Summary: Calculate key stats and create a new df summary</span>
@@ -11910,9 +11910,9 @@ div#notebook {
 <span class="n">district_df</span> <span class="o">=</span> <span class="n">district_df</span><span class="p">[[</span><span class="s1">&#39;Total Schools&#39;</span><span class="p">,</span> <span class="s1">&#39;Total Students&#39;</span><span class="p">,</span> <span class="s1">&#39;Total Budget&#39;</span><span class="p">,</span> <span class="s1">&#39;Average Math Score&#39;</span><span class="p">,</span> <span class="s1">&#39;Average Reading Score&#39;</span><span class="p">,</span>
                         <span class="s1">&#39;% Passing Math&#39;</span><span class="p">,</span> <span class="s1">&#39;% Passing Reading&#39;</span><span class="p">,</span> <span class="s1">&#39;% Overall Passing Rate&#39;</span><span class="p">]]</span>
 
-<span class="c1"># district_df[&quot;Total Schools&quot;] = district_df[&quot;Total Schools&quot;].map(&quot;{:,}&quot;).format</span>
-<span class="c1"># district_df[&quot;Total Students&quot;] = district_df[&quot;Total Students&quot;].map(&quot;{:,}&quot;).format</span>
-<span class="c1"># district_df[&quot;Total Budget&quot;] = district_df[&quot;Total Budget&quot;].map(&quot;${:,}&quot;).format</span>
+<span class="n">district_df</span><span class="p">[</span><span class="s2">&quot;Total Schools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">district_df</span><span class="p">[</span><span class="s2">&quot;Total Schools&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">district_df</span><span class="p">[</span><span class="s2">&quot;Total Students&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">district_df</span><span class="p">[</span><span class="s2">&quot;Total Students&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">district_df</span><span class="p">[</span><span class="s2">&quot;Total Budget&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">district_df</span><span class="p">[</span><span class="s2">&quot;Total Budget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
 <span class="n">district_df</span>
 </pre></div>
 
@@ -11926,7 +11926,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -11962,9 +11962,9 @@ div#notebook {
   <tbody>
     <tr>
       <th>0</th>
-      <td>15.0</td>
-      <td>39170.0</td>
-      <td>24649428.0</td>
+      <td>15</td>
+      <td>39,170</td>
+      <td>$24,649,428.00</td>
       <td>78.985371</td>
       <td>81.87784</td>
       <td>78.985371</td>
@@ -12031,7 +12031,11 @@ div#notebook {
                                                       <span class="p">})</span>
 <span class="n">main_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;School Name&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">main_df</span>
+<span class="n">format_main_df</span> <span class="o">=</span> <span class="n">main_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">format_main_df</span><span class="p">[</span><span class="s1">&#39;Total School Budget&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">format_main_df</span><span class="p">[</span><span class="s1">&#39;Total School Budget&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">format_main_df</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">format_main_df</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">format_main_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">format_main_df</span>
 </pre></div>
 
 </div>
@@ -12092,95 +12096,11 @@ div#notebook {
   </thead>
   <tbody>
     <tr>
-      <th>Huang High School</th>
-      <td>District</td>
-      <td>2917</td>
-      <td>1910635</td>
-      <td>655.0</td>
-      <td>76.629414</td>
-      <td>81.182722</td>
-      <td>65.683922</td>
-      <td>81.316421</td>
-      <td>73.500171</td>
-    </tr>
-    <tr>
-      <th>Figueroa High School</th>
-      <td>District</td>
-      <td>2949</td>
-      <td>1884411</td>
-      <td>639.0</td>
-      <td>76.711767</td>
-      <td>81.158020</td>
-      <td>65.988471</td>
-      <td>80.739234</td>
-      <td>73.363852</td>
-    </tr>
-    <tr>
-      <th>Shelton High School</th>
-      <td>Charter</td>
-      <td>1761</td>
-      <td>1056600</td>
-      <td>600.0</td>
-      <td>83.359455</td>
-      <td>83.725724</td>
-      <td>93.867121</td>
-      <td>95.854628</td>
-      <td>94.860875</td>
-    </tr>
-    <tr>
-      <th>Hernandez High School</th>
-      <td>District</td>
-      <td>4635</td>
-      <td>3022020</td>
-      <td>652.0</td>
-      <td>77.289752</td>
-      <td>80.934412</td>
-      <td>66.752967</td>
-      <td>80.862999</td>
-      <td>73.807983</td>
-    </tr>
-    <tr>
-      <th>Griffin High School</th>
-      <td>Charter</td>
-      <td>1468</td>
-      <td>917500</td>
-      <td>625.0</td>
-      <td>83.351499</td>
-      <td>83.816757</td>
-      <td>93.392371</td>
-      <td>97.138965</td>
-      <td>95.265668</td>
-    </tr>
-    <tr>
-      <th>Wilson High School</th>
-      <td>Charter</td>
-      <td>2283</td>
-      <td>1319574</td>
-      <td>578.0</td>
-      <td>83.274201</td>
-      <td>83.989488</td>
-      <td>93.867718</td>
-      <td>96.539641</td>
-      <td>95.203679</td>
-    </tr>
-    <tr>
-      <th>Cabrera High School</th>
-      <td>Charter</td>
-      <td>1858</td>
-      <td>1081356</td>
-      <td>582.0</td>
-      <td>83.061895</td>
-      <td>83.975780</td>
-      <td>94.133477</td>
-      <td>97.039828</td>
-      <td>95.586652</td>
-    </tr>
-    <tr>
       <th>Bailey High School</th>
       <td>District</td>
       <td>4976</td>
-      <td>3124928</td>
-      <td>628.0</td>
+      <td>$3,124,928.00</td>
+      <td>$628.00</td>
       <td>77.048432</td>
       <td>81.033963</td>
       <td>66.680064</td>
@@ -12188,71 +12108,35 @@ div#notebook {
       <td>74.306672</td>
     </tr>
     <tr>
-      <th>Holden High School</th>
+      <th>Cabrera High School</th>
       <td>Charter</td>
-      <td>427</td>
-      <td>248087</td>
-      <td>581.0</td>
-      <td>83.803279</td>
-      <td>83.814988</td>
-      <td>92.505855</td>
-      <td>96.252927</td>
-      <td>94.379391</td>
+      <td>1858</td>
+      <td>$1,081,356.00</td>
+      <td>$582.00</td>
+      <td>83.061895</td>
+      <td>83.975780</td>
+      <td>94.133477</td>
+      <td>97.039828</td>
+      <td>95.586652</td>
     </tr>
     <tr>
-      <th>Pena High School</th>
-      <td>Charter</td>
-      <td>962</td>
-      <td>585858</td>
-      <td>609.0</td>
-      <td>83.839917</td>
-      <td>84.044699</td>
-      <td>94.594595</td>
-      <td>95.945946</td>
-      <td>95.270270</td>
-    </tr>
-    <tr>
-      <th>Wright High School</th>
-      <td>Charter</td>
-      <td>1800</td>
-      <td>1049400</td>
-      <td>583.0</td>
-      <td>83.682222</td>
-      <td>83.955000</td>
-      <td>93.333333</td>
-      <td>96.611111</td>
-      <td>94.972222</td>
-    </tr>
-    <tr>
-      <th>Rodriguez High School</th>
+      <th>Figueroa High School</th>
       <td>District</td>
-      <td>3999</td>
-      <td>2547363</td>
-      <td>637.0</td>
-      <td>76.842711</td>
-      <td>80.744686</td>
-      <td>66.366592</td>
-      <td>80.220055</td>
-      <td>73.293323</td>
-    </tr>
-    <tr>
-      <th>Johnson High School</th>
-      <td>District</td>
-      <td>4761</td>
-      <td>3094650</td>
-      <td>650.0</td>
-      <td>77.072464</td>
-      <td>80.966394</td>
-      <td>66.057551</td>
-      <td>81.222432</td>
-      <td>73.639992</td>
+      <td>2949</td>
+      <td>$1,884,411.00</td>
+      <td>$639.00</td>
+      <td>76.711767</td>
+      <td>81.158020</td>
+      <td>65.988471</td>
+      <td>80.739234</td>
+      <td>73.363852</td>
     </tr>
     <tr>
       <th>Ford High School</th>
       <td>District</td>
       <td>2739</td>
-      <td>1763916</td>
-      <td>644.0</td>
+      <td>$1,763,916.00</td>
+      <td>$644.00</td>
       <td>77.102592</td>
       <td>80.746258</td>
       <td>68.309602</td>
@@ -12260,16 +12144,136 @@ div#notebook {
       <td>73.804308</td>
     </tr>
     <tr>
+      <th>Griffin High School</th>
+      <td>Charter</td>
+      <td>1468</td>
+      <td>$917,500.00</td>
+      <td>$625.00</td>
+      <td>83.351499</td>
+      <td>83.816757</td>
+      <td>93.392371</td>
+      <td>97.138965</td>
+      <td>95.265668</td>
+    </tr>
+    <tr>
+      <th>Hernandez High School</th>
+      <td>District</td>
+      <td>4635</td>
+      <td>$3,022,020.00</td>
+      <td>$652.00</td>
+      <td>77.289752</td>
+      <td>80.934412</td>
+      <td>66.752967</td>
+      <td>80.862999</td>
+      <td>73.807983</td>
+    </tr>
+    <tr>
+      <th>Holden High School</th>
+      <td>Charter</td>
+      <td>427</td>
+      <td>$248,087.00</td>
+      <td>$581.00</td>
+      <td>83.803279</td>
+      <td>83.814988</td>
+      <td>92.505855</td>
+      <td>96.252927</td>
+      <td>94.379391</td>
+    </tr>
+    <tr>
+      <th>Huang High School</th>
+      <td>District</td>
+      <td>2917</td>
+      <td>$1,910,635.00</td>
+      <td>$655.00</td>
+      <td>76.629414</td>
+      <td>81.182722</td>
+      <td>65.683922</td>
+      <td>81.316421</td>
+      <td>73.500171</td>
+    </tr>
+    <tr>
+      <th>Johnson High School</th>
+      <td>District</td>
+      <td>4761</td>
+      <td>$3,094,650.00</td>
+      <td>$650.00</td>
+      <td>77.072464</td>
+      <td>80.966394</td>
+      <td>66.057551</td>
+      <td>81.222432</td>
+      <td>73.639992</td>
+    </tr>
+    <tr>
+      <th>Pena High School</th>
+      <td>Charter</td>
+      <td>962</td>
+      <td>$585,858.00</td>
+      <td>$609.00</td>
+      <td>83.839917</td>
+      <td>84.044699</td>
+      <td>94.594595</td>
+      <td>95.945946</td>
+      <td>95.270270</td>
+    </tr>
+    <tr>
+      <th>Rodriguez High School</th>
+      <td>District</td>
+      <td>3999</td>
+      <td>$2,547,363.00</td>
+      <td>$637.00</td>
+      <td>76.842711</td>
+      <td>80.744686</td>
+      <td>66.366592</td>
+      <td>80.220055</td>
+      <td>73.293323</td>
+    </tr>
+    <tr>
+      <th>Shelton High School</th>
+      <td>Charter</td>
+      <td>1761</td>
+      <td>$1,056,600.00</td>
+      <td>$600.00</td>
+      <td>83.359455</td>
+      <td>83.725724</td>
+      <td>93.867121</td>
+      <td>95.854628</td>
+      <td>94.860875</td>
+    </tr>
+    <tr>
       <th>Thomas High School</th>
       <td>Charter</td>
       <td>1635</td>
-      <td>1043130</td>
-      <td>638.0</td>
+      <td>$1,043,130.00</td>
+      <td>$638.00</td>
       <td>83.418349</td>
       <td>83.848930</td>
       <td>93.272171</td>
       <td>97.308869</td>
       <td>95.290520</td>
+    </tr>
+    <tr>
+      <th>Wilson High School</th>
+      <td>Charter</td>
+      <td>2283</td>
+      <td>$1,319,574.00</td>
+      <td>$578.00</td>
+      <td>83.274201</td>
+      <td>83.989488</td>
+      <td>93.867718</td>
+      <td>96.539641</td>
+      <td>95.203679</td>
+    </tr>
+    <tr>
+      <th>Wright High School</th>
+      <td>Charter</td>
+      <td>1800</td>
+      <td>$1,049,400.00</td>
+      <td>$583.00</td>
+      <td>83.682222</td>
+      <td>83.955000</td>
+      <td>93.333333</td>
+      <td>96.611111</td>
+      <td>94.972222</td>
     </tr>
   </tbody>
 </table>
@@ -12296,7 +12300,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">main_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;% Overall Passing Rate&#39;</span><span class="p">),</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">format_main_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;% Overall Passing Rate&#39;</span><span class="p">),</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12360,8 +12364,8 @@ div#notebook {
       <th>Cabrera High School</th>
       <td>Charter</td>
       <td>1858</td>
-      <td>1081356</td>
-      <td>582.0</td>
+      <td>$1,081,356.00</td>
+      <td>$582.00</td>
       <td>83.061895</td>
       <td>83.975780</td>
       <td>94.133477</td>
@@ -12372,8 +12376,8 @@ div#notebook {
       <th>Thomas High School</th>
       <td>Charter</td>
       <td>1635</td>
-      <td>1043130</td>
-      <td>638.0</td>
+      <td>$1,043,130.00</td>
+      <td>$638.00</td>
       <td>83.418349</td>
       <td>83.848930</td>
       <td>93.272171</td>
@@ -12384,8 +12388,8 @@ div#notebook {
       <th>Pena High School</th>
       <td>Charter</td>
       <td>962</td>
-      <td>585858</td>
-      <td>609.0</td>
+      <td>$585,858.00</td>
+      <td>$609.00</td>
       <td>83.839917</td>
       <td>84.044699</td>
       <td>94.594595</td>
@@ -12396,8 +12400,8 @@ div#notebook {
       <th>Griffin High School</th>
       <td>Charter</td>
       <td>1468</td>
-      <td>917500</td>
-      <td>625.0</td>
+      <td>$917,500.00</td>
+      <td>$625.00</td>
       <td>83.351499</td>
       <td>83.816757</td>
       <td>93.392371</td>
@@ -12408,8 +12412,8 @@ div#notebook {
       <th>Wilson High School</th>
       <td>Charter</td>
       <td>2283</td>
-      <td>1319574</td>
-      <td>578.0</td>
+      <td>$1,319,574.00</td>
+      <td>$578.00</td>
       <td>83.274201</td>
       <td>83.989488</td>
       <td>93.867718</td>
@@ -12441,7 +12445,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">main_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;% Overall Passing Rate&#39;</span><span class="p">),</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">format_main_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;% Overall Passing Rate&#39;</span><span class="p">),</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12505,8 +12509,8 @@ div#notebook {
       <th>Rodriguez High School</th>
       <td>District</td>
       <td>3999</td>
-      <td>2547363</td>
-      <td>637.0</td>
+      <td>$2,547,363.00</td>
+      <td>$637.00</td>
       <td>76.842711</td>
       <td>80.744686</td>
       <td>66.366592</td>
@@ -12517,8 +12521,8 @@ div#notebook {
       <th>Figueroa High School</th>
       <td>District</td>
       <td>2949</td>
-      <td>1884411</td>
-      <td>639.0</td>
+      <td>$1,884,411.00</td>
+      <td>$639.00</td>
       <td>76.711767</td>
       <td>81.158020</td>
       <td>65.988471</td>
@@ -12529,8 +12533,8 @@ div#notebook {
       <th>Huang High School</th>
       <td>District</td>
       <td>2917</td>
-      <td>1910635</td>
-      <td>655.0</td>
+      <td>$1,910,635.00</td>
+      <td>$655.00</td>
       <td>76.629414</td>
       <td>81.182722</td>
       <td>65.683922</td>
@@ -12541,8 +12545,8 @@ div#notebook {
       <th>Johnson High School</th>
       <td>District</td>
       <td>4761</td>
-      <td>3094650</td>
-      <td>650.0</td>
+      <td>$3,094,650.00</td>
+      <td>$650.00</td>
       <td>77.072464</td>
       <td>80.966394</td>
       <td>66.057551</td>
@@ -12553,8 +12557,8 @@ div#notebook {
       <th>Ford High School</th>
       <td>District</td>
       <td>2739</td>
-      <td>1763916</td>
-      <td>644.0</td>
+      <td>$1,763,916.00</td>
+      <td>$644.00</td>
       <td>77.102592</td>
       <td>80.746258</td>
       <td>68.309602</td>
@@ -12965,9 +12969,9 @@ div#notebook {
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">585</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;&lt;$585&#39;</span>
-    <span class="k">elif</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">585</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">615</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">585</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">615</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;$585-615&#39;</span>
-    <span class="k">elif</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">615</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">645</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">615</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Per Student Budget&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">645</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;$615-645&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;&gt;$645&#39;</span>
